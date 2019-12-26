@@ -1,4 +1,7 @@
-function Insurance() {
+function Insurance(brand, year, type) {
+  this.brand = brand;
+  this.year = year;
+  this.type = type;
 }
 
 const max = new Date().getFullYear(),
