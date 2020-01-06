@@ -7,6 +7,20 @@ function Insurance(brand, year, type) {
 
 function Interface() {
 }
+Interface.prototype.showMessage = (message, type) => {
+  const messageDiv = document.createElement('div');
+  // If Error
+  if (type === 'error') {
+    messageDiv.classList.add('mensaje', 'error');
+  } else if (type === 'success') {
+    messageDiv.classList.add('mensaje', 'correcto');
+  }
+  messageDiv.innerHTML = `${message}`;
+  form.insertBefore(messageDiv, document.querySelector('.form-group'))
+  setTimeout(() => {
+    document.querySelector('.mensaje').remove();
+  }, 3000);
+}
 
 // EventListeners
 const form = document.getElementById('cotizar-seguro');
@@ -31,7 +45,7 @@ form.addEventListener('submit', (e) => {
   // Check form
   if (brandSelected === '' || yearSelected === '' || insuranceType === '') {
     // Instance of Interface showing an error
-    console.log('Data is missing')
+    interface.showMessage('Faltan datos, verifica e intenta de nuevo', 'error');
   } else {
     // Instance of Interface showing the insurance information
     console.log('All Ok!')
